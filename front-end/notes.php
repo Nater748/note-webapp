@@ -64,7 +64,6 @@
                     LIMIT $results_per_page OFFSET $offset";
         }
         $result = mysqli_query($connection, $sql);
-        // ---------------------------------------------------
         ?>
 
         <?php while($row = mysqli_fetch_assoc($result)) { ?>
@@ -91,15 +90,15 @@
         <!-- Pagination links -->
         <div class="pagination">
             <?php if ($page > 1): ?>
-                <a href="notes.php?page=<?php echo $page - 1; ?><?php echo isset($_GET['q']) ? '&q='.urlencode($_GET['q']) : ''; ?>">Previous</a>
+                <a href="notes.php?page=<?php echo $page - 1; ?><?php echo isset($_GET['q']) ? '&q='.urlencode($_GET['q']) : ''; ?>" class="active">Previous</a>
             <?php endif; ?>
 
             <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                <a href="notes.php?page=<?php echo $i; ?><?php echo isset($_GET['q']) ? '&q='.urlencode($_GET['q']) : ''; ?>"><?php echo $i; ?></a>
+                <a href="notes.php?page=<?php echo $i; ?><?php echo isset($_GET['q']) ? '&q='.urlencode($_GET['q']) : ''; ?>" class="active"><?php echo $i; ?></a>
             <?php endfor; ?>
 
             <?php if ($page < $total_pages): ?>
-                <a href="notes.php?page=<?php echo $page + 1; ?><?php echo isset($_GET['q']) ? '&q='.urlencode($_GET['q']) : ''; ?>">Next</a>
+                <a href="notes.php?page=<?php echo $page + 1; ?><?php echo isset($_GET['q']) ? '&q='.urlencode($_GET['q']) : ''; ?>" class="active">Next</a>
             <?php endif; ?>
         </div>
 

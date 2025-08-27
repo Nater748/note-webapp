@@ -44,8 +44,8 @@
         <h3 class="section-title">Deleted Notes</h3>
     
     <?php
-        // --- Pagination setup ---
-        $limit = 5; // number of notes per page
+        // Pagination
+        $limit = 5; 
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         if ($page < 1) $page = 1;
         $offset = ($page - 1) * $limit;
@@ -72,7 +72,6 @@
                           WHERE user_id = {$_SESSION['login']}";
         }
 
-        // Run queries
         $result = mysqli_query($connection, $sql);
         $count_result = mysqli_query($connection, $count_sql);
         $total_row = mysqli_fetch_assoc($count_result)['total'];
@@ -103,7 +102,7 @@
         <!-- Pagination Links -->
         <div class="pagination">
             <?php if($page > 1): ?>
-                <a href="?page=<?php echo $page - 1; ?><?php echo isset($search) ? '&q=' . $search : ''; ?>">Previous</a>
+                <a href="?page=<?php echo $page - 1; ?><?php echo isset($search) ? '&q=' . $search : ''; ?>" class="active">Previous</a>
             <?php endif; ?>
 
             <?php for($i = 1; $i <= $total_pages; $i++): ?>
@@ -114,7 +113,7 @@
             <?php endfor; ?>
 
             <?php if($page < $total_pages): ?>
-                <a href="?page=<?php echo $page + 1; ?><?php echo isset($search) ? '&q=' . $search : ''; ?>">Next</a>
+                <a href="?page=<?php echo $page + 1; ?><?php echo isset($search) ? '&q=' . $search : ''; ?>" class="active">Next</a>
             <?php endif; ?>
         </div>
 
